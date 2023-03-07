@@ -1,0 +1,28 @@
+.navbar{
+    background: linear-gradient(to right, #3b0c81 50%, #0202b4 100%);height: 100px; 
+}
+.navbar ul{
+    display: flex;
+    justify-self: center;
+    justify-content:space-around;
+    align-content: center;
+    list-style: none;
+    align-items: center;
+}
+#logout{
+    font-size: 28px;
+    margin-right: -180px;
+}
+#my-system{
+    font-size: 35px;
+    color:white;
+    margin-left:390px;
+
+}
+li{
+    text-decoration: none;
+    color:white;
+    padding:20px;
+
+}
+

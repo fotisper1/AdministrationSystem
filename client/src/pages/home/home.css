@@ -1,0 +1,26 @@
+.Home-header{
+    margin-top:10px;
+    height: 635px;
+    background-image:linear-gradient(rgba(59, 9, 186, 0.7),rgba(26, 9, 74, 0.6)),url(https://www.ecpi.edu/sites/default/files/tech_52.png);
+    background-size:cover;
+    float: auto;
+    background-position:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.syndesi button{
+    width:230px;
+    height: 50px;
+    font-size: 22px;
+    color:white;
+    background-color: color;
+    margin-right: 40px;
+    border: none;
+    color:blue;
+}
+Link{
+    color:white;
+    text-decoration: none;    
+}
