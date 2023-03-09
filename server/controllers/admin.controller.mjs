@@ -31,7 +31,7 @@ export const Findemployees= async (req,res)=>{
         const employees= await Employee.find()
         if(employees!=null){
             //let employees1= new EmployeesDTO(employees)
-            res.status(200).json({employees:employees1, message:'ta stoixeia olon ton ergazomenon',success:true})
+            res.status(200).json({employees:employees, message:'ta stoixeia olon ton ergazomenon',success:true})
         }
         else{
             res.status(400).json({message:'den vrethikan ypalliloi',success:false})
@@ -44,7 +44,6 @@ export const Findemployees= async (req,res)=>{
 export const Viewemployee= async(req,res)=>{
     try{
         const employeeid=req.params.employeeid
-        console.log('ael'+employeeid)
         if(employeeid){
             const oneemployee=await Employee.findOne({_id:employeeid})
 
@@ -53,7 +52,7 @@ export const Viewemployee= async(req,res)=>{
                 res.status(404).json({message:'den yparxei employee me auto to id',success:false})
             }
             else{
-                let result= new OneEmployeeDTO(oneemployee)
+                //let result= new OneEmployeeDTO(oneemployee)
                 let consumers= await Consumer.find({createdfrom:employeeid})
                 res.status(200).json({employee:oneemployee,consumers:consumers,success:true})
             }

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import './deleteemployee.css'
+import { handleResponseAdmin } from "../../renewtokenAdmin"
 const Deleteemployee=()=>{
     const [success,setSuccess]=useState("")
     const {employeeid}=useParams()
@@ -10,6 +11,7 @@ const Deleteemployee=()=>{
             headers:{"Content-Type": "application/json", 
             "Authorization": "Bearer "+localStorage.getItem('accessToken')}
         })
+        .then(handleResponseAdmin)
         .then(res=>res.json())
         .then((data)=>{
             setSuccess(data.success)

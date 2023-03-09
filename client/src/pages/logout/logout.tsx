@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { handleResponseAdmin } from "../../renewtokenAdmin"
 import './logout.css'
 const Logout=()=>{
     const [message,setMessage]=useState("")
@@ -8,6 +9,7 @@ const Logout=()=>{
             headers:{"Content-Type": "application/json", 
             "Authorization": "Bearer "+localStorage.getItem('accessToken')}
         })
+        .then(handleResponseAdmin)
         .then(res=>res.json())
         .then((data)=>{
             setMessage(data.message)

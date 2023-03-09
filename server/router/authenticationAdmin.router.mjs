@@ -5,6 +5,6 @@ const authenicationAdminRouter = express.Router()
 
 authenicationAdminRouter.post('/login',login)
 
-authenicationAdminRouter.post('/renew',renewAuthentication) 
+authenicationAdminRouter.post('/renew/:id',renewAuthentication) 
 
 export default authenicationAdminRouter

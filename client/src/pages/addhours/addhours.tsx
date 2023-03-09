@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import './addhours.css'
+import { handleResponseEmployee } from "../../renewtokenEmployee";
 const Addhours=()=>{
     const navigate= useNavigate()
     const [hours,setHours]=useState("")
@@ -15,6 +16,7 @@ const Addhours=()=>{
             "Authorization": "Bearer "+localStorage.getItem('accessToken')},
             body:JSON.stringify({workhours:hours})
         })
+        .then(handleResponseEmployee)
         .then(res=>res.json())
         .then((data:any)=>{
             if(data.success){

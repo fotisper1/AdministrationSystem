@@ -48,7 +48,6 @@ export const addWorkHours=async (req,res)=>{
             let currentdate= new Date();
             let currentmonth= currentdate.getMonth();
             let currentday= currentdate.getDate();
-            console.log(datemonth)
             if(currentmonth===datemonth && currentday===dateday){
                 return res.status(400).json({message:'exoun idi kataxorithei oi ores ergasias gia simera',success:false})
             }
@@ -73,7 +72,6 @@ export const addWorkHours=async (req,res)=>{
     }
 }
 
-//douleyei kanonika, yparxei problima me to key
 export const addEmployee=async (req,res)=>{
     const onoma= req.body.name
     const passwordconfirm= req.body.password

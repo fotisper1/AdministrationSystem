@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import './employees.css';
+import { handleResponseAdmin } from "../../renewtokenAdmin";
 interface IEmployee{
     _id:string;
     name:string;
@@ -32,6 +33,7 @@ const Employees= ()=>{
             headers:{"Content-Type": "application/json", 
           "Authorization": "Bearer "+localStorage.getItem('accessToken')}
         })
+        .then(handleResponseAdmin)
         .then(res=>res.json())
         .then((data)=>{
             if(data.success){

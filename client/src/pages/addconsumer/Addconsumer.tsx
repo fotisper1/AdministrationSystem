@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './addconsumer.css'
 import { useParams } from "react-router-dom";
+import { handleResponseEmployee } from "../../renewtokenEmployee";
 const Addconsumer=()=>{
     const [name, setName] = useState("");
     const [afm, setAfm] = useState("");
@@ -17,6 +18,7 @@ const Addconsumer=()=>{
             "Authorization": "Bearer "+localStorage.getItem('accessToken')},
             body:JSON.stringify({username:name, arithmosafm:afm,employee:employeeid, poso:poso})
             })
+            .then(handleResponseEmployee)
             .then(res=>res.json())
             .then((data)=>{
                 if(data.success){

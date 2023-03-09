@@ -56,9 +56,11 @@ export async function createTokens(username,userid){
 }
 
 export const renewAuthentication = async (req,res,next)=>{
-    //take the refresh token from the user
+  //take the refresh token from the user
   const refreshToken = req.body.token;
-  const refreshTokenFromDB =  await RefreshToken.findOne({token:refreshToken})
+  console.log(refreshToken)
+  const adminId=req.params.id
+  const refreshTokenFromDB =  await RefreshToken.findOne({_id:adminId,token:refreshToken})
   //send error if there is no token or it's invalid
   if (!refreshToken) return res.status(401).json("You are not authenticated!");
   if (!refreshTokenFromDB) {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Params, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import './addsalary.css'
+import { handleResponseAdmin } from "../../renewtokenAdmin";
 const Addsalary=()=>{
     const [salary,Setsalary]=useState("")
     const [message,setMessage]=useState("")
@@ -15,6 +16,7 @@ const Addsalary=()=>{
             "Authorization": "Bearer "+localStorage.getItem('accessToken')},
             body:JSON.stringify({salary:salary})
         })
+        .then(handleResponseAdmin)
         .then(res=>res.json())
         .then((data:any)=>{
             if(data.success){

@@ -56,7 +56,8 @@ export async function createTokens(username,userid){
 }
 
 export const renewAuthentication = async (req,res,next)=>{
-    //take the refresh token from the user
+  console.log('kanei renew ta token')
+  //take the refresh token from the user
   const refreshToken = req.body.token;
   const refreshTokenFromDB =  await RefreshToken.findOne({token:refreshToken})
   //send error if there is no token or it's invalid

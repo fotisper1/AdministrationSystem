@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './consumers.css'
+import { handleResponseEmployee } from "../../renewtokenEmployee";
 const linkStyle = {
     textDecoration: "none",
     color: 'white',
@@ -10,24 +11,24 @@ const linkStyle = {
     padding:"8px",
   };
 const Consumers=(props:any)=>{
-    console.log('consumers...');
+
     const [consumersdata,setData]=useState<any>([]);
     const {employeeid}=useParams();
     const [message,setMessage]=useState("")
     const fetchData= async()=>{
-        console.log('aelole');
+
         await fetch(`http://localhost:3000/employee/${employeeid}`,{
           method:'GET',
           headers:{"Content-Type": "apptdcation/json", 
           "Authorization": "Bearer "+localStorage.getItem('accessToken')}
-        }).then(res=>res.json())
+        })
+        .then(handleResponseEmployee)
+        .then(res=>res.json())
         .then((data:any)=>{
             if(data.success){
-                console.log(data.consumerss)
                 setData(data.consumerss)
             }
             else{
-                console.log('error')
                 setMessage(data.message)
             }
         })
@@ -63,7 +64,6 @@ const Consumers=(props:any)=>{
                         </tr>
                     </thead>
                 </table>
-                //rgb(29, 3, 84)
             )
         })}</div><br></br>
         </div>

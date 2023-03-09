@@ -2,7 +2,7 @@ import { link } from "fs";
 import { useState,useEffect } from "react";
 import { Link, useParams,useNavigate } from "react-router-dom";
 import './oneemployee.css'
-import Deleteemployee from "../deleteemployee/Deleteemployee";
+import { handleResponseAdmin } from "../../renewtokenAdmin";
 interface IEmployee{
     name:string;
     surname:string;
@@ -33,12 +33,11 @@ const Oneemployee=(props:any)=>{
             headers:{"Content-Type": "appthcation/json",
             "Authorization": "Bearer "+localStorage.getItem('accessToken')}
         })
+        .then(handleResponseAdmin)
         .then(res=>res.json())
         .then((data)=>{
             if(data.success){
                 setdata(data.employee)
-                console.log(data.employee)
-                console.log(data.consumers)
                 setCons(data.consumers)
             }
             else{
