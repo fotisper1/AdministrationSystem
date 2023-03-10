@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './addconsumer.css'
 import { useParams } from "react-router-dom";
-import { handleResponseEmployee } from "../../renewtokenEmployee";
+import { handleResponseEmployee } from "../../utils/renewtokenEmployee";
 const Addconsumer=()=>{
     const [name, setName] = useState("");
     const [afm, setAfm] = useState("");

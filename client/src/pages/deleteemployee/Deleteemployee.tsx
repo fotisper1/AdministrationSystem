@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import './deleteemployee.css'
-import { handleResponseAdmin } from "../../renewtokenAdmin"
+import { handleResponseAdmin } from "../../utils/renewtokenAdmin"
 const Deleteemployee=()=>{
     const [success,setSuccess]=useState("")
     const {employeeid}=useParams()

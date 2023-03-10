@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import './employees.css';
-import { handleResponseAdmin } from "../../renewtokenAdmin";
+import { handleResponseAdmin } from "../../utils/renewtokenAdmin";
 interface IEmployee{
     _id:string;
     name:string;

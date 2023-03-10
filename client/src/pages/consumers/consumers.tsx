@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './consumers.css'
-import { handleResponseEmployee } from "../../renewtokenEmployee";
+import { handleResponseEmployee } from "../../utils/renewtokenEmployee";
 const linkStyle = {
     textDecoration: "none",
     color: 'white',

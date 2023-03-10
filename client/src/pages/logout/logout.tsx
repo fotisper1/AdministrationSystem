@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { handleResponseAdmin } from "../../renewtokenAdmin"
+import { handleResponseAdmin } from "../../utils/renewtokenAdmin"
 import './logout.css'
 const Logout=()=>{
     const [message,setMessage]=useState("")

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Params, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import './addsalary.css'
-import { handleResponseAdmin } from "../../renewtokenAdmin";
+import { handleResponseAdmin } from "../../utils/renewtokenAdmin";
 const Addsalary=()=>{
     const [salary,Setsalary]=useState("")
     const [message,setMessage]=useState("")

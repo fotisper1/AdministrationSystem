@@ -2,7 +2,7 @@ import { link } from "fs";
 import { useState,useEffect } from "react";
 import { Link, useParams,useNavigate } from "react-router-dom";
 import './oneemployee.css'
-import { handleResponseAdmin } from "../../renewtokenAdmin";
+import { handleResponseAdmin } from "../../utils/renewtokenAdmin";
 interface IEmployee{
     name:string;
     surname:string;
