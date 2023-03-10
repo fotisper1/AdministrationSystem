@@ -18,3 +18,5 @@ Employee:
 5)To add one consumer.
 6)To see the table of customers.
 7)To delete one consumer.
+
+*For admin, the username is adminofficial and the password is 123larisa123
