@@ -1,5 +1,4 @@
-let accessToken = localStorage.getItem('accessToken');
-let refreshToken = localStorage.getItem('refreshToken');
+
 
 export const handleResponseEmployee= async (response:any) => {
   if (response.ok) {
@@ -11,6 +10,9 @@ export const handleResponseEmployee= async (response:any) => {
     if (!originalRequest._retry) {
       originalRequest._retry = true;
       try {
+        let accessToken = localStorage.getItem('accessToken');
+        let refreshToken = localStorage.getItem('refreshToken');
+        console.log(refreshToken)
         const renewResponse = await fetch(`http://localhost:3000/auth-employee/renew/${localStorage.getItem('id')}`, {
           method: 'POST',
           headers: {
@@ -22,7 +24,7 @@ export const handleResponseEmployee= async (response:any) => {
 
         const renewData = await renewResponse.json();
         localStorage.setItem('accessToken',renewData.accessToken)
-        localStorage.setItem('refrshToken',renewData.refreshToken)
+        localStorage.setItem('refreshToken',renewData.refreshToken)
 
         const newResponse = await fetch(originalRequest.url, {
           method: originalRequest.method,

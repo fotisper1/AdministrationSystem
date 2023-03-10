@@ -1,11 +1,15 @@
 import mongoose, { model, mongo } from "mongoose";
 const AccessTokenschema= mongoose.Schema({
     token:{type:String,required:true},
-    user:{type:String,required:true}
+    user:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'Admin',
+        required:true
+    }
 })
 
 
-var AccessToken = mongoose.model('accesstokensadmin',AccessTokenschema)
+var AccessTokenAdmin = mongoose.model('accesstokensadmin',AccessTokenschema)
 
 
-export default AccessToken
+export default AccessTokenAdmin

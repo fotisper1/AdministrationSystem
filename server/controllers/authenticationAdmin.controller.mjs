@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
 import bcrypt from 'bcrypt'
-import AccessToken from "../schemas/accessTokenAdmin.schema.mjs"
-import RefreshToken from "../schemas/refreshTokenAdmin.schema.mjs"
+import AccessTokenAdmin from '../schemas/accessTokenAdmin.schema.mjs'
+import RefreshTokenAdmin from "../schemas/refreshTokenAdmin.schema.mjs"
 import Admin from "../schemas/admin.schema.mjs"
+import { where } from "sequelize"
 dotenv.config()
 
 export const login = async (req,res)=>{
@@ -46,39 +47,46 @@ export const login = async (req,res)=>{
 
 export async function createTokens(username,userid){
     const data = { name: username, userId:userid}
-    const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' })
-    const refreshToken = jwt.sign(data,process.env.REFRESH_TOKEN_SECRET,{expiresIn:'10m'})
+    const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '20s' })
+    const refreshToken = jwt.sign(data,process.env.REFRESH_TOKEN_SECRET, {expiresIn:'20s'})
 
-    await AccessToken.create({token:accessToken,user:userid})
-    await RefreshToken.create({token:accessToken,user:userid})
+    await AccessTokenAdmin.create({token:accessToken,user:userid})
+    await RefreshTokenAdmin.create({token:refreshToken,user:userid})
 
     return [accessToken,refreshToken];
 }
 
 export const renewAuthentication = async (req,res,next)=>{
-  //take the refresh token from the user
-  const refreshToken = req.body.token;
-  console.log(refreshToken)
-  const adminId=req.params.id
-  const refreshTokenFromDB =  await RefreshToken.findOne({_id:adminId,token:refreshToken})
+  try{
+    //take the refresh token from the user
+    const refreshToken = req.body.token;
+    console.log('the res token:',refreshToken)
+    const adminId=req.params.id
+    const refreshTokenFromDB = await RefreshTokenAdmin.find({token:refreshToken})
+    console.log(refreshTokenFromDB)
   //send error if there is no token or it's invalid
-  if (!refreshToken) return res.status(401).json("You are not authenticated!");
-  if (!refreshTokenFromDB) {
-    return res.status(403).json("Refresh token does not exist!");
-  }
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, data) => {
-    if(err){
-      res.status(401).json({
-        error:"refresh token is not valid"
-      })
-      return;
+    if (!refreshToken) return res.status(401).json("You are not authenticated!");
+    if (!refreshTokenFromDB){
+      return res.status(403).json("Refresh token does not exist!");
     }
-    const newTokens = createTokens(data.name,userId);
-    res.status(200).json({
-      accessToken: newTokens.accessToken,
-      refreshToken: newTokens.refreshToken,
-    });
-  });
+    //const data= await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
+      /*if(error){
+        console.log(error.message)
+        res.status(401).json({
+          error:"refresh token is not valid"
+        })
+        return;
+      }*/
+    console.log(adminId)
+    const admin= await Admin.findOne({_id:adminId})
+    console.log(admin.name,admin._id)
+    const newTokens = await createTokens(admin.name,admin._id);
+    console.log(newTokens)
+      res.status(200).json({accessToken: newTokens[0],refreshToken: newTokens[1]});
+  }
+  catch(err){
+    console.log(err.message)
+  }
 }
 export const Logout= async (req,res)=>{
   try{

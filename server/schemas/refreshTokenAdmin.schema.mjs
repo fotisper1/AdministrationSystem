@@ -1,10 +1,13 @@
 import mongoose, { model, mongo } from "mongoose";
 const RefreshTokenschema= mongoose.Schema({
     token:{type:String,required:true},
-    user:{type:String,required:true}
+    user:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'Admin',
+        required:true}
 })
 
 
-var RefreshToken = mongoose.model('refreshtokensadmin',RefreshTokenschema)
+var RefreshTokenAdmin = mongoose.model('refreshtokensadmin',RefreshTokenschema)
 
-export default RefreshToken
+export default RefreshTokenAdmin

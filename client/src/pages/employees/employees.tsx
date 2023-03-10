@@ -69,7 +69,7 @@ const Employees= ()=>{
           <div className="employeesnav">
             <table>
             <thead>
-            <tr id="basic">
+            <tr id="basic" key={'basic'}>
                 <th id="name">Employee name </th>
                 <th id="surname">Surname </th>
                 <th id="consumers">Counter consumers </th>
