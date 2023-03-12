@@ -27,12 +27,11 @@ export const handleResponseEmployee= async (response:any) => {
         localStorage.setItem('refreshToken',renewData.refreshToken)
 
         const newResponse = await fetch(originalRequest.url, {
-          method: originalRequest.method,
+          ...originalRequest,
           headers: {
-            ...originalRequest.headers,
-            "Authorization": "Bearer " + accessToken
-          },
-          body: originalRequest.body
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + renewData.accessToken
+          }
         });
 
         return newResponse;

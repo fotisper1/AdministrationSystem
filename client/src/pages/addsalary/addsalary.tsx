@@ -24,6 +24,7 @@ const Addsalary=()=>{
             }
             else{
               setMessage(data.message)
+              console.log('data:',data.message)
             }
         })
     }
@@ -35,7 +36,7 @@ const Addsalary=()=>{
             <input type="text" name="salary" onChange={(e) => Setsalary(e.target.value)}></input><br></br>
             <button type="submit">Add salary</button>
           </form>
-          <h2>{message}</h2>
+          <div className="slrmessage">{message}</div>
         </div>
     )
 }

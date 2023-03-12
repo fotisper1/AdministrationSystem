@@ -47,8 +47,8 @@ export const login = async (req,res)=>{
 
 export async function createTokens(username,userid){
     const data = { name: username, userId:userid}
-    const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' })
-    const refreshToken = jwt.sign(data,process.env.REFRESH_TOKEN_SECRET, {expiresIn:'10m' })
+    const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' })
+    const refreshToken = jwt.sign(data,process.env.REFRESH_TOKEN_SECRET, {expiresIn:'5m' })
 
     await AccessTokenAdmin.create({token:accessToken,user:userid})
     await RefreshTokenAdmin.create({token:refreshToken,user:userid})

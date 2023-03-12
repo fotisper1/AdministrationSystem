@@ -18,11 +18,6 @@
     height: 30px;
     margin-top:25px;
 }
-.formslr h2{
-    margin: 20px;
-    font-size: 25px;
-    color:black;
-}
 .formslr label,button{
     color:white;
 }
@@ -35,6 +30,7 @@
     border-radius: 5px;
     margin-top: 20px;
 }
-.message{
-    font-size: 15px;
+.slrmessage{
+    font-size: 20px;
+    color: black;
 }

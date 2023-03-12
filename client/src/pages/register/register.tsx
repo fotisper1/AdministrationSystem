@@ -39,7 +39,7 @@ const Register=()=>{
             <input type="password" name="passwordconfirm"  required onChange={(e)=>setPasswordConfirm(e.target.value)}></input><br></br>
             <label htmlFor="surname">Surname</label><br></br>
             <input type="text" name="surname" required onChange={(e)=>setSurname(e.target.value)}></input><br></br>
-            <button type="submit">Σύνδεση</button>
+            <button type="submit">Register</button>
             </form>
         </div> 
         {success && <Registersuccessfully />}

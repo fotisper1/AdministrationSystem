@@ -5,7 +5,7 @@
     padding: 8px 0 30px 0;
     border-radius: 4px;
     box-shadow: 0px 30px 50px 0px rgba(41, 15, 210, 0.458);
-    background-color: rgb(88, 18, 229);
+    background:linear-gradient(to bottom, #3b0c81 50%, #0202b4 100%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .register label{

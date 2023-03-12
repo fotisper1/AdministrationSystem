@@ -42,7 +42,7 @@ const LoginAdmin=()=>{
             <label htmlFor="name">Username</label><br></br>
             <input type="text" name="name" required onChange={(e) => setName(e.target.value)} value={name}></input><br></br>
             <label htmlFor="password">Password</label><br></br>
-            <input type="text" name="password" required onChange={(e) => setPassword(e.target.value)} value={password}></input><br></br>
+            <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)} value={password}></input><br></br>
             <button type="submit">Σύνδεση</button>
         </form>
 

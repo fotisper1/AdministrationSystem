@@ -86,7 +86,7 @@ const Oneemployee=(props:any)=>{
             <div className="consumersofemployeenav">
                 <table>
                     <thead>
-                        <tr>
+                        <tr key={'one_consumer'}>
                             <th>Consumer name</th>
                             <th>AFM number</th>
                             <th>Price buy</th>
@@ -98,7 +98,7 @@ const Oneemployee=(props:any)=>{
             <table>
                 <thead>{consumersdata.map((consumer:any)=>{
                     return (
-                        <tr>
+                        <tr key={'consumer_data'}>
                             <td>{consumer.name}</td>
                             <td>{consumer.AFM}</td>
                             <td>{consumer.pricebuy}</td>

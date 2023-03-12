@@ -6,9 +6,6 @@ const ConsumerSchema= mongoose.Schema({
     createdfrom:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:"Employee"
-    },
-    file:{data:Buffer,
-        contentType:String
     }
 })
 

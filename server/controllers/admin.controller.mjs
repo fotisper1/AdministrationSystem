@@ -81,13 +81,15 @@ export const Searchadmin= async(req,res)=>{
     }
 }
 export const Fireemployee= async(req,res)=>{
+    //delete employee and the consumers of employee
     const employeeid= req.params.employeeid;
     try{
         const finding= await Employee.findOne({_id:employeeid})
         if(finding){
             const result = await Employee.deleteOne({_id:employeeid})
-            if(result.deletedCount){
-                res.status(200).json({message:'o ypallilos diagrafthike epytxos',success:true})
+            const empconsumers= await Consumer.deleteMany({createdfrom:employeeid})
+            if(result.deletedCount && empconsumers.deletedCount){
+                res.status(200).json({message:'o ypallilos diagrafthike epytixos',success:true})
             }
             else{
                 res.status(400).json({message:'ypirxe sfalma kata tin diagrafi toy ypallilou',success:false})
